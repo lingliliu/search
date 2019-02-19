@@ -1,0 +1,55 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>百度搜索联想词</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/index.css" />   
+</head>
+<body>
+    <div class="wrapper">
+        <button>百度</button>
+        <div class="search">
+            <input type="text">
+        </div>
+       
+    </div>
+    <div class="box">
+        <ul>
+            
+        </ul>
+    </div>
+    <script>
+        var oInput = document.getElementsByTagName('input')[0];
+        var oUl = document.getElementsByTagName('ul')[0];
+       //在输入框输入的时候获取数据
+        oInput.oninput = function(){
+            var oScript = document.createElement('script');
+            //获取输入框的值
+            var invalue = oInput.value;
+            //将输入框的值拼接到请求中，将自己写的回调函数名称拼接上
+            oScript.src = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd='+invalue+'&cb=cbs';
+            //插入到body中就可以发送请求了
+            document.body.appendChild(oScript);
+            //插入完成之后script就可以删掉
+            oScript.remove();
+        }
+        //回调函数，处理请求返回的数据
+        function cbs(data){
+            if(data.s.length > 0){
+                var str = '';
+                oUl.style.display ='block';
+                data.s.forEach(function(index){            
+                //将li都拼接好，然后集体插入到ul中
+                str += '<li>'+index+"</li>";
+                oUl.innerHTML = str;
+            })}
+            else{  
+                oUl.style.display = 'none';
+            }
+            
+        }
+    </script>
+</body>
+</html>

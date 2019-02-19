@@ -1,0 +1,53 @@
+body, ul, li, input, button {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    outline: none;
+}
+
+.wrapper {
+    margin: 50px auto;
+    height: 30px;
+    width: 500px;
+    border: 1px solid blueviolet;
+   
+    overflow: hidden;
+    position: relative;
+}
+button {
+    border: none;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -20px; 
+    background:blue;
+    color: #fff;
+    height: 40px;
+    width: 20%;
+    font-size: 1em;
+    cursor: pointer;
+}
+.search {
+    position: absolute;
+    width: 80%;
+    height: 100%;  
+}
+.search input {
+    height: 100%;
+    width: 370px;
+    border: none;
+    padding: 5px 5px;
+}
+.box {
+    position: absolute;  
+    top: 84px;
+    border: none;
+    left: 50%;
+    margin-left: -250px;  
+    width: 500px;
+}
+.box ul {
+    display: none;
+    width: 80%;
+    border: 1px solid rgba(0,0,0,0.3);
+}
